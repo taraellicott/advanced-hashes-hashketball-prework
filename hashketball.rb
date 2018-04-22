@@ -222,8 +222,14 @@ end
 #   # returns # rebounds of player w/largest shoe size
 #   # 1. find player w/ largest shoe size
 # #   # 2. return player's # of rebounds
+player =
 # end
 
+
+def big_shoe_rebounds
+  player = player_biggest_shoe_size
+  player.fetch(:rebounds)
+end
 
 # def most_points_scored
 #   # return player w/ most points scored
