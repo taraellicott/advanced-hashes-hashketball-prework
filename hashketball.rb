@@ -117,57 +117,74 @@ def game_hash
 }
 end
 
-def home_team_name
-  game_hash[:home][:team_name]
-end
-puts home_team_name
-
-def good_practices
-  game_hash.each do |location, team_data|
-    binding.pry
-      team_data.each do |attribute, data|
-        binding.pry
-        data.each do |data_item|
-            binding.pry
-      end
-    end
-  end
+# 1.
+def players
+  home_players = game_hash[:home][:players]
+  away_players = game_hash[:away][:players]
+  players = home_players + away_players
 end
 
-def num_points_scored(players_name)
-  # returns points scored for player
+
+def find_the_player(players_name)
+  players.find {|player| player.fetch(:players_name) == players_name}
 end
 
-def shoe_size(players_name)
-  game_hash[players_name][shoe_size]
-  # returns shoe size for player
+
+def num_points_scored(name)
+  named_player = find_the_player(name)
+  named_player.fetch(:points)
 end
 
-def team_colors(team_name)
-  [team_name].fetch[:colors]
-  # returns array of teams colors
+
+# 2.
+def shoe_size(name)
+    # returns shoe size for player
+  named_player = find_the_player(name)
+  named_player.fetch(:shoe)
 end
 
+# 3.
+def player_by_number(number)
+  # returns the players number
+  players.find do |player_hash|
+player_hash.fetch(:number) == number
+ end
+end
+
+
+# def team_colors(team_name)
+#   # returns array of teams colors
+# end
+
+
+# 4.
 def team_names
-  team.map do |team|
-    game_hash[team_name].values
-    
-  # returns array of the team team_names
+  home_team = game_hash[:home][:team_name]
+  away_team = game_hash[:away][:team_name]
+  teams = [home_team, away_team]
 end
 
-def player_numbers(team_name)
-  # returns array of jersey player_numbers
-end
 
-def player_stats(players_name)
-  # returns hash of players player_stats
-end
+# # 5.
+# def player_numbers(team_name)
+# player_numbers = []
+# #   # returns array of jersey player_numbers
+# end
+#
+#
+# # 6.
+# def player_stats(players_name)
+#   # returns hash of players player_stats
+# end
+#
+#
+# # 7.
+# def big_shoe_rebounds
+#   # returns # rebounds of player w/largest shoe size
+#   # 1. find player w/ largest shoe size
+# #   # 2. return player's # of rebounds
+# end
 
-def big_shoe_rebounds
-  returns # rebounds of player w/largest shoe size
-  # 1. find player w/ largest shoe size
-  # 2. return player's # of rebounds
-end
 
 # def most_points_scored
 #   # return player w/ most points scored
