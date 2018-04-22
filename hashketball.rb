@@ -155,21 +155,31 @@ end
 def teams
   game_hash.values
 end
+# def teams
+#   game_hash.values
+# end
 
+def find_the_team(team_name)
+  teams.find do |team|
+    team.fetch(:team_name) == team_name
+  end
+end
 
 def find_the_team(team_name)
   teams.find {|team| team.fetch(:team_name) == team_name}
 end
 
 
-# def team_colors(team_name)
-#   # returns array of teams colors
-# end
-
 def team_colors(team_name)
+# returns array of teams colors
   team = find_the_team(team_name)
   team.fetch(:colors)
 end
+
+# def team_colors(team_name)
+#   team = find_the_team(team_name)
+#   team.fetch(:colors)
+# end
 
 
 # 4.
@@ -180,24 +190,32 @@ def team_names
 end
 
 
-# # 5.
-def player_numbers(team_name)]
- # returns array of jersey player_numbers
-end
-
+# 5.
 def player_numbers(team_name)
-  find_the_team(team_name)[:players].map do |player|
+# returns array of jersey player_numbers
+  find_the_team(team_name)[players].map do |player|
     player[:number]
   end
 end
-#
-# # 6.
-# def player_stats(players_name)
-#   # returns hash of players player_stats
+
+# def player_numbers(team_name)
+#   find_the_team(team_name)[:players].map do |player|
+#     player[:number]
+#   end
 # end
-#def player_stats(player_name)
-  find_the_player(player_name).reject { |key, value| key == :player_name }
+
+
+# 6.
+def player_stats(players_name)
+# returns hash of players player_stats
+  find_the_player(player_name).reject do |key, value|
+    key == :player_name
+  end
 end
+
+#def player_stats(player_name)
+#   find_the_player(player_name).reject { |key, value| key == :player_name }
+# end
 #
 # # 7.
 # def big_shoe_rebounds
@@ -207,12 +225,6 @@ end
 # end
 
 
-
-
-
-def find_the_player(name)
-  players.find {|player| player.fetch(:player_name) == name}
-end
 # def most_points_scored
 #   # return player w/ most points scored
 # end
