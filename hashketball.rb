@@ -165,9 +165,9 @@ def find_the_team(team_name)
   end
 end
 
-def find_the_team(team_name)
-  teams.find {|team| team.fetch(:team_name) == team_name}
-end
+# def find_the_team(team_name)
+#   teams.find {|team| team.fetch(:team_name) == team_name}
+# end
 
 
 def team_colors(team_name)
@@ -216,20 +216,32 @@ end
 #def player_stats(player_name)
 #   find_the_player(player_name).reject { |key, value| key == :player_name }
 # end
-#
-# # 7.
-# def big_shoe_rebounds
-#   # returns # rebounds of player w/largest shoe size
-#   # 1. find player w/ largest shoe size
-# #   # 2. return player's # of rebounds
-player =
+
+# 7.
+# def player_biggest_shoe_size
+#   players.sort_by {|player| player.fetch(:shoe) }.last
 # end
 
+def player_biggest_shoe_size
+  x = players.sort_by do |player|
+    player.fetch(:shoe)
+  end
+  x.last
+end
 
 def big_shoe_rebounds
+# returns # rebounds of player w/largest shoe size
+# 1. find player w/ largest shoe size
+# 2. return player's # of rebounds
   player = player_biggest_shoe_size
   player.fetch(:rebounds)
 end
+
+
+# def big_shoe_rebounds
+#   player = player_biggest_shoe_size
+#   player.fetch(:rebounds)
+# end
 
 # def most_points_scored
 #   # return player w/ most points scored
