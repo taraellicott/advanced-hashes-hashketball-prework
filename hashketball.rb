@@ -151,6 +151,9 @@ player_hash.fetch(:number) == number
  end
 end
 
+def teams
+  game_hash.values
+end
 
 # def team_colors(team_name)
 #   # returns array of teams colors
